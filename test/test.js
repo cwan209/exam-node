@@ -4,3 +4,4 @@ const nconf = require('nconf');
 nconf.argv()
   .env()
   .file({ file: './config.json' });
+// require("../database/db");
