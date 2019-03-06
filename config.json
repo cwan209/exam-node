@@ -1,5 +1,10 @@
 {
   "port": 5000,
   "mongodbPort": 27017,
-  "app_api_url": "http://localhost:5000/api/"
+  "app_api_url": "http://localhost:5000/api/",
+  "smtp": {
+    "host": "email-smtp.us-east-1.amazonaws.com",
+    "username": "AKIAIVYG6TBCVXLSE5FA",
+    "password": "BGZGGiaQ8lwiSbMdcq0hVxlUEZHjMI0i2tdL+tpl5LNr"
+  }
 }

@@ -1,8 +1,8 @@
 const User = require('../database/schemas/user');
 const bcrypt = require('bcrypt');
 var validator = require('validator');
+const mailer = require('../helper/mailer');
 
-validator.isEmail('foo@bar.com');
 const signup = async function (req, res) {
   const {email, password} = req.body;
   const saltRounds = 10;
@@ -18,6 +18,9 @@ const signup = async function (req, res) {
     const hashedPassword = await bcrypt.hashSync(password, saltRounds);
     const newUser = new User({ email: email, password: hashedPassword});
     const result = await newUser.save();
+
+    // Send Email
+    mailer.sendUserVerificationEmail(email);
 
     return res.status(201).send(result);
   } catch (error) {
