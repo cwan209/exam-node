@@ -10,11 +10,11 @@ const signup = async function (req, res) {
 
   try {
     // Check Email
-    if (!validator.isEmail(email)) return res.status(400).send(`This is not a valid email`);
+    if (!validator.isEmail(email)) return res.status(400).send({success: false, error: `This is not a valid email`});
 
     // Check User
     const user = await User.findOne({email: email});
-    if (user) return res.status(400).send(`User ${email} already exist`);
+    if (user) return res.status(400).send({success: false, error: `User ${email} already exist`});
 
     // Send Email
     mailer.send(email)
@@ -25,14 +25,14 @@ const signup = async function (req, res) {
         const newUser = new User({email: email, password: hashedPassword});
         const result = await newUser.save();
 
-        return res.status(201).send(result);
+        return res.status(201).send({success: true, user: result});
       })
       .catch(error => {
-          return res.status(error.responseCode).send(error.response);
+          return res.status(error.responseCode).send({success: false, error:error.response});
         }
       );
   } catch (error) {
-    return res.status(500).send(error);
+    return res.status(500).send({success: false, error:error});
   }
 };
 
