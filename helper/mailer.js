@@ -25,7 +25,7 @@ async function send(to){
     to: to, // list of receivers
     subject: "Hello ✔", // Subject line
     text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>" // html body
+    html: "<b>Congratulations! You have successfully signed up!</b>" // html body
   };
 
   // send mail with defined transport object
@@ -41,8 +41,3 @@ async function send(to){
 
 exports.send = send;
 
-const sendUserVerificationEmail = to => {
-  send(to).catch(console.error);
-};
-
-exports.sendUserVerificationEmail = sendUserVerificationEmail;
