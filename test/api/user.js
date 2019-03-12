@@ -16,7 +16,7 @@ describe('User', function () {
     before(function () {
       email = createRandomName();
       options = {
-        url: `${nconf.get('app_api_url')}v1/signup`,
+        url: `${nconf.get('appApiUrl')}v1/signup`,
         method: 'POST',
         json: true,
         body: {

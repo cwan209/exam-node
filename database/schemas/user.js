@@ -5,6 +5,8 @@ const userSchema = new Schema({
   name:  String,
   email: String,
   password: String,
+  verificationToken: String,
+  verified: Boolean
 });
 
 userSchema.index({email: 1});
