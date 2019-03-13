@@ -34,7 +34,7 @@ exports.send = send;
 
 function sendAccountVerificationEmail(email, verificationToken) {
 
-  const link = `${nconf.get('frontEndUrl')}?token=${verificationToken}$?email=${email}`;
+  const link = `${nconf.get('frontEndUrl')}verify?verificationToken=${verificationToken}&email=${email}`;
 
   let mailOptions = {
     from: 'lukechenluwang@gmail.com', // sender address
