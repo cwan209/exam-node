@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "nodemon index.js"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,14 +14,18 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "lodash": "^4.17.11",
     "md5": "^2.2.1",
     "mongoose": "^5.4.15",
     "multer": "^1.4.1",
     "nconf": "^0.10.0",
     "nodemailer": "^5.1.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
+    "session-file-store": "^1.2.0",
     "validator": "^10.11.0"
   },
   "devDependencies": {

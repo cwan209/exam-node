@@ -7,5 +7,6 @@
     "username": "AKIAIVYG6TBCVXLSE5FA",
     "password": "BGZGGiaQ8lwiSbMdcq0hVxlUEZHjMI0i2tdL+tpl5LNr"
   },
-  "frontEndUrl": "http://localhost:3000/"
+  "frontEndUrl": "http://localhost:3000/",
+  "environment": "development"
 }
