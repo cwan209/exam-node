@@ -95,3 +95,10 @@ const verify = async function (req, res) {
 };
 
 exports.verify = verify;
+
+const session = async function (req, res) {
+  const session = {auth: req.isAuthenticated()};
+  res.status(200).json(session);
+};
+
+exports.session = session;
