@@ -39,17 +39,34 @@ if (env === 'development') {
 }
 
 // passport.js Setup for local authentication
-const User = require('./database/schemas/user');
+app.use(passport.initialize());
+app.use(passport.session());
+
 passport.serializeUser((user, done) => {
+  console.log('serializeUser')
   done(null, user.id)
 });
 passport.deserializeUser((id, done) => {
+  console.log('deserializeUser')
   User.findById(id, (err, user) => {
     done(err, user);
   })
 });
-app.use(passport.initialize());
-app.use(passport.session());
+
+const User = require('./database/schemas/user');
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+  },
+  function(email, password, done) {
+    console.log('LocalStrategy');
+    User.findOne({ email: email }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      if (!user.verifyPassword(password)) { return done(null, false); }
+      return done(null, user);
+    });
+  }
+));
 
 // Routes
 app.get('/', (req, res) => res.send('Hello World!'));

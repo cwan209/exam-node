@@ -1,8 +1,9 @@
 const User = require('../database/schemas/user');
 const bcrypt = require('bcrypt');
-var validator = require('validator');
+const validator = require('validator');
 const mailer = require('../helper/mailer');
-var md5 = require('md5');
+const md5 = require('md5');
+const passport = require('passport');
 
 const signup = async function (req, res) {
   const {email, password, name} = req.body;
@@ -96,9 +97,23 @@ const verify = async function (req, res) {
 
 exports.verify = verify;
 
-const session = async function (req, res) {
+const session = function (req, res) {
   const session = {auth: req.isAuthenticated()};
   res.status(200).json(session);
 };
 
 exports.session = session;
+
+const logout = function (req, res) {
+  req.logout();
+  res.redirect('/');
+};
+
+exports.logout = logout;
+
+const login = function (req, res) {
+  res.redirect('/');
+};
+
+exports.login = login;
+
