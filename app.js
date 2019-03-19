@@ -58,11 +58,13 @@ passport.use(new LocalStrategy({
     usernameField: 'email',
   },
   function(email, password, done) {
-    console.log('LocalStrategy');
-    User.findOne({ email: email }, function (err, user) {
+  console.log(email, password);
+    User.findOne({ email: email }, async function (err, user) {
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
-      if (!user.verifyPassword(password)) { return done(null, false); }
+      if (!await user.verifyUser(password)) {
+        return done(null, false);
+      }
       return done(null, user);
     });
   }

@@ -111,9 +111,8 @@ const logout = function (req, res) {
 
 exports.logout = logout;
 
-const login = function (req, res) {
-  res.redirect('/');
+const login = function(req, res){
+  res.json(req.user);
 };
-
 exports.login = login;
 
